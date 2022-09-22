@@ -6,7 +6,6 @@ dotenv.config();
 export async function __createRecommendation() { 
     const songName: string = faker.music.songName();
     const youtubeLink: string = await randomUrlGen.getRandomMusicVideoUrl();
-    console.log(youtubeLink);
 
     return { 
         name: songName, 
