@@ -61,6 +61,15 @@ async function updateScore(id: number, operation: "increment" | "decrement") {
       score: { [operation]: 1 },
     },
   });
+} 
+
+async function downvoteScore(id: number, operation: "decrement") {
+  return prisma.recommendation.update({
+    where: { id },
+    data: {
+      score: { [operation]: 5 },
+    },
+  });
 }
 
 async function remove(id: number) {
@@ -77,4 +86,5 @@ export const recommendationRepository = {
   updateScore,
   getAmountByScore,
   remove,
+  downvoteScore
 };
