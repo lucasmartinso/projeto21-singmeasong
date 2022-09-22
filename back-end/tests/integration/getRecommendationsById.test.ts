@@ -11,13 +11,12 @@ beforeEach(async()=> {
     await deleteAllData();
 })
 
-describe("Test GET /recommendations", () => { 
+describe("Test GET /recommendations/:id", () => { 
     it("Have to answer 200, if the user send the corretly data", async() => { 
-        const { status, body }: {status: number, body: any} = await server.get("/recommendations").send();
+        const { status, body }: {status: number, body: any} = await server.get("/recommendations/:id").send();
+        console.log(body)
 
         expect(status).toBe(200);
-        expect(body).toBeInstanceOf(Array);
-        expect(body.length).toBeLessThanOrEqual(10);
     }); 
 }) 
 
