@@ -18,12 +18,8 @@ describe("Unit tests about insert service", () => {
     it("Have to create a recommendation", async() => { 
         const recommendation: recommendation = await __createRecommendation(); 
 
-        jest.spyOn(recommendationRepository, 'findByName').mockImplementation((): any => {
-            return { recommendation }
-        }); 
-        jest.spyOn(recommendationService, 'insert').mockImplementation((): any => {
-            return { recommendation }
-        }); 
+        jest.spyOn(recommendationRepository, 'findByName').mockImplementation((): any => {}); 
+        jest.spyOn(recommendationRepository, 'create').mockImplementation((): any => {}); 
 
         await recommendationService.insert(recommendation);
 
@@ -37,6 +33,8 @@ describe("Unit tests about insert service", () => {
         jest.spyOn(recommendationRepository, 'findByName').mockImplementation((): any => {
             return recommendation
         });  
+        jest.spyOn(recommendationRepository, 'create').mockImplementation((): any => {});
+
         const promise = recommendationService.insert(recommendation);
 
         expect(promise).rejects.toEqual({
@@ -45,4 +43,4 @@ describe("Unit tests about insert service", () => {
         }); 
         expect(recommendationRepository.create).not.toBeCalled();
     }); 
-})
+}); 
