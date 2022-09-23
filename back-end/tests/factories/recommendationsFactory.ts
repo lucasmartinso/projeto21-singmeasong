@@ -4,9 +4,9 @@ import randomUrlGen from "random-youtube-music-video";
 dotenv.config();
 
 export async function __createRecommendation() { 
-    const songName: string = faker.music.songName();
+    const songName: string = await faker.music.songName();
     const youtubeLink: string = await randomUrlGen.getRandomMusicVideoUrl();
-
+    
     return { 
         name: songName, 
         youtubeLink: youtubeLink
