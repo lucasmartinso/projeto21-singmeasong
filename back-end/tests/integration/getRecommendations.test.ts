@@ -1,10 +1,10 @@
 import supertest from "supertest";
 import app from "../../src/app"
-import { recommendation } from "../../src/types/recommendatiosType";
 import { __createRecommendation } from "../factories/recommendationsFactory";
 import { deleteAllData, disconnectPrisma, connectPrisma } from "../factories/scenaryFactory";
 
 const server = supertest(app); 
+jest.setTimeout(30000);
 
 beforeEach(async()=> { 
     await connectPrisma();

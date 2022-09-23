@@ -6,6 +6,7 @@ import type { recommendation } from "../../src/types/recommendatiosType";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository"
 
 const server = supertest(app); 
+jest.setTimeout(30000);
 
 beforeEach(async()=> { 
     await connectPrisma();
