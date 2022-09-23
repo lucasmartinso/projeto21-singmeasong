@@ -21,20 +21,22 @@ describe("Test GET /recommendations/top/:amount", () => {
         await server.post("/recommendations").send(recommendation2); 
         const recomendationId: any = await server.get("/recommendations").send();
         console.log(recomendationId.body);
-        const { status, body }: {status: number, body: object | null } = await server.get(`/recommendations/random`).send();
+        await server.post(`/recommendations/${recomendationId.body[0].id}/upvote`).send();
+        const { status, body }: {status: number, body: object[] | null } = await server.get(`/recommendations/top/${recomendationId.body.length}`).send();
         console.log(body);
 
         expect(status).toBe(200); 
-        expect(body).not.toBeNull();
-        expect(body).toHaveProperty('youtubeLink');
+        expect(body).toBeInstanceOf(Array);
+        expect(body.length).toBeLessThanOrEqual(recomendationId.body.length);
     }); 
 
     it("Have to answer 404, if recommendationId doesn't exist", async() => { 
-        const { status, body }: {status: number, body: object | null } = await server.get(`/recommendations/random`).send();
+        const { status, body }: {status: number, body: object[] | null } = await server.get(`/recommendations/top/0`).send();
         console.log(body);
 
         expect(status).toBe(404); 
         expect(body).not.toBeNull();
+        expect(body.length).toBe(0);
     })
 }) 
 
