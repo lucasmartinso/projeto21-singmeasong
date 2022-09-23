@@ -31,19 +31,18 @@ describe("Unit tests about insert service", () => {
         expect(recommendationRepository.create).toBeCalled();
     }); 
 
-    it("Have to create a recommendation", async() => { 
+    it("Have to denied permission to create a duplicated recommendation", async() => { 
         const recommendation: recommendation = await __createRecommendation(); 
 
         jest.spyOn(recommendationRepository, 'findByName').mockImplementation((): any => {
-            return { recommendation }
-        }); 
-        jest.spyOn(recommendationService, 'insert').mockImplementation((): any => {
-            return { recommendation }
-        }); 
+            return recommendation
+        });  
+        const promise = recommendationService.insert(recommendation);
 
-        await recommendationService.insert(recommendation);
-
-        expect(recommendationRepository.findByName).toBeCalled(); 
-        expect(recommendationRepository.create).toBeCalled();
+        expect(promise).rejects.toEqual({
+            type: 'conflict', 
+            message: 'Recommendations names must be unique'
+        }); 
+        expect(recommendationRepository.create).not.toBeCalled();
     }); 
 })
