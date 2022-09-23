@@ -12,7 +12,7 @@ beforeEach(async()=> {
     await deleteAllData();
 })
 
-describe("Test GET /recommendations/random", () => { 
+describe("Test GET /recommendations/top/:amount", () => { 
     it("Have to answer 200, if sucess and have to match the right return", async() => { 
         const recommendation1: recommendation = await __createRecommendation(); 
         const recommendation2: recommendation = await __createRecommendation();
@@ -29,7 +29,7 @@ describe("Test GET /recommendations/random", () => {
         expect(body).toHaveProperty('youtubeLink');
     }); 
 
-    it("Have to answer 404, if doesn't exist recommendations in teh database", async() => { 
+    it("Have to answer 404, if recommendationId doesn't exist", async() => { 
         const { status, body }: {status: number, body: object | null } = await server.get(`/recommendations/random`).send();
         console.log(body);
 
