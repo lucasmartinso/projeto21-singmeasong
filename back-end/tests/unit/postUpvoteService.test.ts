@@ -1,7 +1,6 @@
 import { jest } from '@jest/globals';
 import { recommendationRepository } from '../../src/repositories/recommendationRepository';
 import { recommendationService } from '../../src/services/recommendationsService';
-import { recommendation } from '../../src/types/recommendatiosType';
 import { __createRecommendation } from '../factories/recommendationsFactory';
 
 jest.setTimeout(30000);
@@ -38,7 +37,7 @@ describe("Unit tests about upvote service", () => {
 
         jest.spyOn(recommendationRepository, 'findByName').mockImplementation((): any => {});  
         jest.spyOn(recommendationRepository, 'updateScore').mockImplementation((): any => {}); 
-        
+
         const promise = recommendationService.upvote(1);
 
         expect(promise).rejects.toEqual({
