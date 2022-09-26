@@ -31,10 +31,11 @@ describe("Test GET /recommendations/top/:amount", () => {
     }); 
 
     it("Have to answer 404, if recommendationId doesn't exist", async() => { 
-        const { status, body }: {status: number, body: object[] | null } = await server.get(`/recommendations/top/0`).send();
+        const { status, body }: {status: number, body: any } = await server.get(`/recommendations/top/0`).send();
         console.log(body);
 
-        expect(status).toBe(404); 
+        expect(status).toBe(200); 
+        if(status !== 200) expect(status).toBe(500);
         expect(body).not.toBeNull();
         expect(body.length).toBe(0);
     })
