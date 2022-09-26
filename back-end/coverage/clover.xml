@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1664160916019" clover="3.2.0">
-  <project timestamp="1664160916019" name="All files">
+<coverage generated="1664211237522" clover="3.2.0">
+  <project timestamp="1664211237522" name="All files">
     <metrics statements="91" coveredstatements="91" conditionals="8" coveredconditionals="8" methods="17" coveredmethods="17" elements="116" coveredelements="116" complexity="0" loc="91" ncloc="91" packages="6" files="7" classes="7"/>
     <package name="src">
       <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -11,12 +11,12 @@
         <line num="3" count="8" type="stmt"/>
         <line num="4" count="8" type="stmt"/>
         <line num="5" count="8" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
         <line num="8" count="8" type="stmt"/>
         <line num="9" count="8" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
         <line num="12" count="8" type="stmt"/>
         <line num="14" count="8" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
       </file>
       <file name="database.ts" path="/home/lucas/projetos/projeto21-singmeasong/back-end/src/database.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
