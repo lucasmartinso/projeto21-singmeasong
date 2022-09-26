@@ -14,7 +14,7 @@ afterEach(() => {
     jest.restoreAllMocks();
   });
 
-describe("Unit tests about downvote service", () => { 
+describe("Unit tests about get service", () => { 
     it("Have to pick the last 10 recommendations", async() => {  
         const recommendation = {
             id: 1, 

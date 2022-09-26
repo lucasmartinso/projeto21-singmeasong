@@ -14,8 +14,9 @@ afterEach(() => {
     jest.restoreAllMocks();
   });
 
-describe("Unit tests about downvote service", () => { 
+describe("Unit tests about getTop service", () => { 
     it("Have to pick the amout of recommendations order by score desc", async() => {  
+        const amount: number = 6;
         const recommendation = {
             id: 1, 
             name: "Coldplay - Paradise (Official Video)", 
@@ -65,12 +66,13 @@ describe("Unit tests about downvote service", () => {
             
         }); 
 
-        const recommendations: Recommendation[] = await recommendationService.getTop(3);
+        const recommendations: Recommendation[] = await recommendationService.getTop(amount);
         
         expect(recommendationRepository.getAmountByScore).toBeCalled();
         expect(recommendations[0].id).toBe(recommendation.id); 
         expect(recommendations[0].name).toBe(recommendation.name);
         expect(recommendations[0].youtubeLink).toBe(recommendation.youtubeLink); 
         expect(recommendations[0].score).toBe(recommendation.score + 10);
+        expect(recommendations.length).toBe(amount);
     }); 
 }); 
