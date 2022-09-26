@@ -1,4 +1,3 @@
-import randomUrlGen from "random-youtube-music-video";
 import { faker } from "@faker-js/faker"
 
 describe('Test POST upvote', () => {
@@ -9,8 +8,8 @@ describe('Test POST upvote', () => {
     }
     
     cy.visit('http://localhost:3000/');
-    cy.request('POST','http://localhost:5000/recommendations', recommendation).as("recommendations");
-    cy.wait("@recommendations");
+    cy.request('POST','http://localhost:5000/recommendations', recommendation).as('recommendationsPost');
+    cy.wait('@recommendationsPost');
 
     cy.get(`#${recommendation.name}`).click();
   })
