@@ -1,6 +1,11 @@
 import { faker } from "@faker-js/faker"
 
 describe('Test POST downvote', () => {
+
+  beforeEach(() => { 
+    cy.resetDatabase();
+  })
+
   it('Post /recommendations/:id/downvote', async() => {
     const recommendation = { 
       name: faker.music.songName(), 
@@ -10,7 +15,7 @@ describe('Test POST downvote', () => {
     cy.visit('http://localhost:3000/');
     cy.request('POST','http://localhost:5000/recommendations', recommendation).as('recommendationsPost');
 
-    cy.get(`#${recommendation.name.substring(0,recommendation.name.length-3)}`).click();
+    cy.get(`[data-cy="downvote"]`).click()	
     cy.wait('@recommendationsPost');
   })
 })

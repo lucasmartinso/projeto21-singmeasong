@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { reset } from "../controllers/e2eController"
+import * as e2eController from "../controllers/e2eController.js"
 
-const  testsRouter = Router();
+const testsRouter = Router();
 
-testsRouter.post("/e2e/reset", reset);
+testsRouter.post("/e2e/reset", e2eController.reset);
 
 
 export default testsRouter;

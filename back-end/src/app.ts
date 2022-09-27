@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/recommendations", recommendationRouter);
-//app.use(testsRouter)
+app.use(testsRouter)
 app.use(errorHandlerMiddleware);
 
 export default app;
